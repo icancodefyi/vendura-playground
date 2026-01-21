@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vendura Playground
 
-## Getting Started
+This app is built using Vendura.
 
-First, run the development server:
+It demonstrates:
+- Cart creation
+- Checkout
+- Razorpay payments
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How to run locally
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. Clone this repo and install dependencies:
+   ```sh
+   pnpm install
+   ```
+2. Set up your `.env.local` with:
+   ```env
+   MONGO_URL=your-mongodb-uri
+   RAZORPAY_KEY_ID=your-razorpay-key-id
+   RAZORPAY_KEY_SECRET=your-razorpay-key-secret
+   NEXT_PUBLIC_RAZORPAY_KEY_ID=your-razorpay-key-id
+   ```
+3. Build and start the app:
+   ```sh
+   pnpm dev
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## What does Vendura handle for you?
+- All backend logic for cart, order, and payment flows
+- Database and payment integration via config
+- API routes for cart, add item, checkout, and webhooks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Flows implemented
+- Create cart
+- Add item to cart
+- Checkout (creates order and Razorpay order)
+- Pay with Razorpay (test mode)
 
-## Learn More
+## How to test Razorpay payments
+- Use the test keys in your `.env.local`
+- Add items and checkout, then pay with Razorpay’s test UI
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For framework internals, see:
+→ https://github.com/icancodefyi/vendura
